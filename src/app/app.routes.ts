@@ -15,7 +15,7 @@ export const routes: Routes = [
         canActivate: [],
     },
     {
-        path: 'barber',
+        path: 'barbers',
         component: BarberComponent,
         canActivate: [],
     }
