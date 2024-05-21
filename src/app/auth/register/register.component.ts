@@ -56,7 +56,7 @@ export class RegisterComponent {
 
   onSubmit(){
     console.log(this.RegisterForm.value);
-    
+    this.dialogRef.close();
   }
   onNoClick(): void {
     this.dialogRef.close();

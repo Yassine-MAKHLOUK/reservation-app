@@ -50,7 +50,7 @@ export class LoginComponent {
 
   onSubmit(){
     console.log(this.LoginForm.value);
-    
+    this.dialogRef.close();
   }
   onNoClick(): void {
     this.dialogRef.close();
