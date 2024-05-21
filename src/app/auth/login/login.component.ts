@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog'
+import { MatIconModule } from '@angular/material/icon';
 
 export interface LoginDialogData {
   email: string;
@@ -22,18 +23,22 @@ export interface LoginDialogData {
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatIconModule,
     
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LoginDialogData,
   ) {}
 
+  public showPassword: boolean = false;
   private fb = inject(FormBuilder);
+
   LoginForm = this.fb.group({
     email: [null, Validators.required],
     password: [null, Validators.required],
@@ -49,5 +54,8 @@ export class LoginComponent {
   }
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 }

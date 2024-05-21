@@ -18,7 +18,8 @@
           </div>
           <div class="col">
             <mat-form-field>
-              <input matInput type="password" placeholder="Password" formControlName="password">
+              <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Password" formControlName="password">
+              <mat-icon matSuffix (click)="togglePasswordVisibility()">{{showPassword?'visibility_off':'visibility'}}</mat-icon>
               @if(LoginForm.controls['password'].hasError('required')) {<mat-error >
                 Password <strong>required</strong>
               </mat-error>}
