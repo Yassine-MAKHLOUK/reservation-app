@@ -9,6 +9,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-booking',
@@ -24,6 +25,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
     MatIconModule,
     MatCardModule,
     MatDatepickerModule,
+    MatButtonModule,
   ],
   templateUrl: './booking.component.html',
   providers:[provideNativeDateAdapter()],
