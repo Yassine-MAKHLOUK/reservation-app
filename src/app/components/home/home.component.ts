@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../../auth/login/login.component';
+import { RegisterComponent } from '../../auth/register/register.component';
 
 
 
@@ -16,20 +17,33 @@ export interface LoginDialogData {
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  firstname: string | undefined;
+  lastname: string | undefined;
   email: string | undefined;
   password: string | undefined;
-  data: LoginDialogData | undefined;
+
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  openLoginDialog(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       data: {email: this.email, password: this.password},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.data = result;
+       result;
+    });
+  }
+
+  openRegisterDialog(): void {
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      data: {firstname: this.firstname, lastname: this.lastname, email: this.email, password: this.password},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      result;
     });
   }
 }

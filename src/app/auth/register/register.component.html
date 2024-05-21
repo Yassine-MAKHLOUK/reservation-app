@@ -1,1 +1,62 @@
-<p>register works!</p>
+
+<mat-dialog-content>
+    <form [formGroup]="RegisterForm" novalidate (ngSubmit)="onSubmit()">
+        <mat-card class="shipping-card">
+          <mat-card-header>
+            <mat-card-title class="text-white text-center">Sign up</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+    
+            <div class="row">
+                <div class="col">
+                    <mat-form-field>
+                        <input matInput placeholder="First name" formControlName="firstname">
+                        @if(RegisterForm.controls['firstname'].hasError('required')){<mat-error >
+                        First name <strong>required</strong>
+                        </mat-error>}
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field>
+                        <input matInput placeholder="Last name" formControlName="lastname">
+                        @if(RegisterForm.controls['firstname'].hasError('required')){<mat-error >
+                        Last name <strong>required</strong>
+                        </mat-error>}
+                    </mat-form-field>
+                </div>
+                  
+            </div>
+              <div class="col">
+                <mat-radio-group aria-label="Select an option" formControlName="gender">
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput placeholder="Email" formControlName="email">
+                  @if(RegisterForm.controls['email'].hasError('required')){<mat-error >
+                    Email <strong>required</strong>
+                  </mat-error>}
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field>
+                  <input matInput [type]="showPassword ? 'text' : 'password'" placeholder="Password" formControlName="password">
+                  <mat-icon matSuffix (click)="togglePasswordVisibility()">{{showPassword?'visibility_off':'visibility'}}</mat-icon>
+                  @if(RegisterForm.controls['password'].hasError('required')) {<mat-error >
+                    Password <strong>required</strong>
+                  </mat-error>}
+                </mat-form-field>
+              </div>
+           
+           
+            <!-- Other form fields -->
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit">Register</button>
+            <button mat-button (click)="onNoClick()">No Thanks</button>
+          </mat-card-actions>
+        </mat-card>
+      </form>
+    </mat-dialog-content>
