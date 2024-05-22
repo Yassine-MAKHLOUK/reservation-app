@@ -18,4 +18,22 @@ export class AuthServiceService {
     return this.http.post<any>(this.apiUrl+"/login", user);
   }
 
+  logout() {
+    // Clear user authentication data from local storage or cookies
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
+
+  isAuthenticated(): boolean {
+    if (!this.isBrowser()) {
+      return false;
+    }
+    const token = localStorage.getItem('token');
+    return token !== null && token !== '';
+  }
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+
 }
