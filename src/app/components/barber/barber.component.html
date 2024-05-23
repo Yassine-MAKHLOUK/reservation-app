@@ -1,9 +1,31 @@
-<mat-card>
-    <mat-card-header class="text-white">Barber 1</mat-card-header>
-    <mat-card-content>
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" mat-card-avatar>
-        Simple card content 
-    </mat-card-content>
-    <mat-card-actions><button mat-raised-button color="accent" >Book</button></mat-card-actions>
-  </mat-card>
+
+@if (barbers.length > 0) {
+<div>
+    <h2>Barbers List</h2>
+    @for (barber of barbers; track $index) {
+    <div class="barber-card">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ barber.username }}</mat-card-title>
+          <mat-card-subtitle>{{ barber.email }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-avatar src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" alt="Barber image">
+        <mat-card-content>
+          <p>Role: {{ barber.role }}</p>
+          <!-- Add any additional barber information you want to display here -->
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="openBookingDialog()">Book</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    }
+  </div>
+}
+  @if (barbers.length === 0) {
+    <div >
+        <p>No barbers available.</p>
+    </div>
+}
   
