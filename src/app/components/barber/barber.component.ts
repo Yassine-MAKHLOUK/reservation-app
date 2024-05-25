@@ -25,6 +25,7 @@ export class BarberComponent implements OnInit, OnDestroy {
   lastname: string | undefined;
   email: string | undefined;
   service: string | undefined;
+  barber: any | undefined;
 
   private subscription: Subscription = new Subscription;
 
@@ -40,7 +41,7 @@ export class BarberComponent implements OnInit, OnDestroy {
     this.barberService.getAllBarbers().subscribe(
       data => {
         this.barbers = data.data;
-        console.log('Barbers:', this.barbers);
+        // console.log('Barbers:', this.barbers);
       },
       error => {
         console.error('Error fetching barbers:', error);
@@ -48,9 +49,10 @@ export class BarberComponent implements OnInit, OnDestroy {
     );
   }
 
-  openBookingDialog(): void {
+  openBookingDialog(barber: any): void {
+    this.barber = barber;
     const dialogRef = this.dialog.open(BookingComponent, {
-      data: {firstname: this.firstname, lastname: this.lastname, email: this.email, service: this.service},
+      data: {barber: this.barber, firstname: this.firstname, lastname: this.lastname, email: this.email, service: this.service},
     });
 
     dialogRef.afterClosed().subscribe(result => {

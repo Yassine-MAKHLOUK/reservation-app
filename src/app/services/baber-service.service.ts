@@ -6,12 +6,12 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class BaberServiceService {
-  private apiUrl = 'http://localhost:8080/api/v1/auth';
+  private apiUrl = 'http://localhost:8080/api/v1/barber';
 
   constructor(private http : HttpClient) { }
 
   getAllBarbers(): Observable<any> {
-    return this.http.get<any>(this.apiUrl+"/allBarbers");
+    return this.http.get<any>(this.apiUrl+"/all");
   }
 
 }
