@@ -15,4 +15,10 @@ export class BookServiceService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<any>(this.apiUrl+"clientBook", bookObject, {headers});
   }
+
+  getBarberBookings(barberName: string): Observable<any>{
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`${this.apiUrl}barber/${barberName}`, {headers});
+  }
 }

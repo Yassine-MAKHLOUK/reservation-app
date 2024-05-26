@@ -36,6 +36,16 @@ export class AuthServiceService {
     return token !== null && token !== '';
   }
 
+  
+  getToken(): string | null {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem('token');
+    } else {
+      console.error('localStorage is not available');
+      return null;
+    }
+  }
+
   private isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
