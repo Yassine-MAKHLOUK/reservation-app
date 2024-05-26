@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { BarberComponent } from './components/barber/barber.component';
+import { BarberListComponent } from './components/barber-list/barber-list.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 export const routes: Routes = [
     {
@@ -10,13 +12,18 @@ export const routes: Routes = [
         canActivate: [],
     },
     {
-        path: 'book',
-        component: BookingComponent,
+        path: 'admin',
+        component: AdminComponent,
+        canActivate: [],
+    },
+    {
+        path: 'barber',
+        component: BarberComponent,
         canActivate: [],
     },
     {
         path: 'barbers',
-        component: BarberComponent,
+        component: BarberListComponent,
         canActivate: [],
     }
 ];

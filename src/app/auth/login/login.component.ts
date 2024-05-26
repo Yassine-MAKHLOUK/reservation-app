@@ -62,8 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       response => {
         console.log('Login successful', response);
         localStorage.setItem("token", response.data.token)
-        // Handle successful login, e.g., store the token, navigate to another page
-        this.router.navigate(['/barbers']); // Redirect to the "book" route
+        this.redirectUser(response.data.role)
 
       },
       error => {
@@ -72,6 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     );
   }
+  
 
   onSubmit(){
     this.login(this.LoginForm.value);
@@ -83,6 +83,26 @@ export class LoginComponent implements OnInit, OnDestroy {
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
+  redirectUser(role: string): void {    
+    if (role) {
+      switch (role) {
+        case 'ADMIN':
+          this.router.navigate(['/admin']);
+          break;
+        case 'CLIENT':
+          this.router.navigate(['/barbers']);
+          break;
+        case 'BARBER':
+          this.router.navigate(['/barber']);
+          break;
+        default:
+          this.router.navigate(['/']);
+          break;
+      }
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnDestroy(): void {
     if (this.subscription) {
@@ -90,3 +110,4 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 }
+

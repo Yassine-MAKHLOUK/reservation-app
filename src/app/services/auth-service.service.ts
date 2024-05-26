@@ -18,6 +18,10 @@ export class AuthServiceService {
     return this.http.post<any>(this.apiUrl+"/login", user);
   }
 
+  fetchUserRoles(token: string): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/userRole/${token}`);
+  }
+
   logout() {
     // Clear user authentication data from local storage or cookies
     localStorage.removeItem('token');

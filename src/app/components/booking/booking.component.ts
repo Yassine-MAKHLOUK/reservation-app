@@ -82,7 +82,7 @@ export class BookingComponent implements OnInit {
           barberName: this.data.barber.barberName,
           phone: this.bookingForm.value.phone!,
           date: this.datePipe.transform(this.bookingForm.value.date, 'dd-MM-yyyy'),
-          token: localStorage.getItem('token')!,
+          token: this.getToken()!,
           service: this.bookingForm.value.service!,
         };
 
@@ -95,6 +95,15 @@ export class BookingComponent implements OnInit {
         });
     }
   }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
