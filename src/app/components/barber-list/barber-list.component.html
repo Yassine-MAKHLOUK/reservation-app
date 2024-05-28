@@ -1,7 +1,8 @@
 
+<div class="container-lg">
 @if (barbers.length > 0) {
-    <div>
-        <h2>Barbers List</h2>
+  <h2>Barbers List</h2>
+    <div class="d-flex flex-column">
         @for (barber of barbers; track $index) {
         <div class="barber-card">
           <mat-card>
@@ -10,13 +11,20 @@
               <mat-card-title>{{ barber.barberName }}</mat-card-title>
               <mat-card-subtitle>{{ barber.email }}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-avatar src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" alt="Barber image">
+            <img mat-card-md-image src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" alt="Barber image">
             <mat-card-content>
               <!-- Add any additional barber information you want to display here -->
+              @for (prestation of barber.prestation; track $index) {
+                <div class="prestation">
+                  <h2>{{ prestation.name }} {{ prestation.price }}</h2>
+                  <p>{{ prestation.description }}</p>
+                  <mat-card-actions>
+                    <button mat-raised-button color="accent" (click)="openBookingDialog( barber )">Book</button>
+                  </mat-card-actions>
+                </div>
+              }
             </mat-card-content>
-            <mat-card-actions>
-              <button mat-raised-button color="accent" (click)="openBookingDialog( barber )">Book</button>
-            </mat-card-actions>
+           
           </mat-card>
         </div>
         }
@@ -28,3 +36,4 @@
         </div>
     }
       
+</div>
