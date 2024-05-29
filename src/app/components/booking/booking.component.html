@@ -30,7 +30,7 @@
         </div>
         <div class="col">
           <mat-form-field>
-            <input matInput placeholder="Service" formControlName="service">
+            <input matInput placeholder="{{data.service}}" formControlName="service" [value]="data.service" type="disabled" readonly>
              @if(bookingForm.controls['service'].hasError('required')){<mat-error>
               Service <strong>required</strong>
             </mat-error>}

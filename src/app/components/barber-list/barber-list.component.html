@@ -19,7 +19,7 @@
                   <h2>{{ prestation.name }} {{ prestation.price }}$</h2>
                   <p>{{ prestation.description }}</p>
                   <mat-card-actions>
-                    <button mat-raised-button color="accent" (click)="openBookingDialog( barber )">Book</button>
+                    <button mat-raised-button color="accent" (click)="openBookingDialog( barber, prestation.name )">Book</button>
                   </mat-card-actions>
                 </div>
               }

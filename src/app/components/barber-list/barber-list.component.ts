@@ -50,10 +50,10 @@ export class BarberListComponent {
     );
   }
 
-  openBookingDialog(barber: any): void {
+  openBookingDialog(barber: any, service: string): void {
     this.barber = barber;
     const dialogRef = this.dialog.open(BookingComponent, {
-      data: {barber: this.barber, firstname: this.firstname, lastname: this.lastname, email: this.email, service: this.service},
+      data: {barber: this.barber, firstname: this.firstname, lastname: this.lastname, email: this.email, service: service},
     });
 
     dialogRef.afterClosed().subscribe(result => {

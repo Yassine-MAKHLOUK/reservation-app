@@ -22,6 +22,7 @@ export interface BookingDialogData {
   lastname: string;
   phone: string;
   email: string;
+  service: string;
   Date: string;
 }
 export interface BookingObject {
@@ -70,7 +71,7 @@ export class BookingComponent implements OnInit {
   bookingForm = this.fb.group({
     phone:  [null, Validators.required],
     date: [null, Validators.required],
-    service: [null, Validators.required],
+    service: [null],
 
   });
 
@@ -83,7 +84,7 @@ export class BookingComponent implements OnInit {
           phone: this.bookingForm.value.phone!,
           date: this.datePipe.transform(this.bookingForm.value.date, 'dd-MM-yyyy'),
           token: this.getToken()!,
-          service: this.bookingForm.value.service!,
+          service: this.data.service,
         };
 
         console.log(this.reservation);
